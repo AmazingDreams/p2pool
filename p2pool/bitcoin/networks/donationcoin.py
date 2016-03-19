@@ -10,16 +10,16 @@ from p2pool.util import pack
 P2P_PREFIX = 'fbc0b6db'.decode('hex')
 P2P_PORT = 9333
 ADDRESS_VERSION = 48
-RPC_PORT = 9332
+RPC_PORT = 21060
 RPC_CHECK = defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
             'donationcoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         ))
-SUBSIDY_FUNC = lambda height: 50*100000000 >> (height + 1)//840000
+SUBSIDY_FUNC = lambda height: 50*100000000 >> (height + 1)//720000
 POW_FUNC = lambda data: pack.IntType(256).unpack(__import__('ltc_scrypt').getPoWHash(data))
-BLOCK_PERIOD = 150 # s
-SYMBOL = 'LTC'
-CONF_FILE_FUNC = lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Litecoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Litecoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.donationcoin'), 'donationcoin.conf')
+BLOCK_PERIOD = 240 # s
+SYMBOL = 'DON'
+CONF_FILE_FUNC = lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Donationcoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/Donationcoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.donationcoin'), 'donationcoin.conf')
 BLOCK_EXPLORER_URL_PREFIX = 'http://explorer.donationcoin.net/block/'
 ADDRESS_EXPLORER_URL_PREFIX = 'http://explorer.donationcoin.net/address/'
 TX_EXPLORER_URL_PREFIX = 'http://explorer.donationcoin.net/tx/'
