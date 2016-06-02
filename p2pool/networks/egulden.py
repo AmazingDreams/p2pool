@@ -11,9 +11,9 @@ PREFIX = '7208c1a53ef629b0'.decode('hex')
 P2P_PORT = 9338
 MIN_TARGET = 0
 MAX_TARGET = 2**256//2**20 - 1
-PERSIST = False
+PERSIST = True
 WORKER_PORT = 9327
-BOOTSTRAP_ADDRS = ''.split(' ')
+BOOTSTRAP_ADDRS = 'p2pefl.amazingsystems.nl egulden.org'.split(' ')
 ANNOUNCE_CHANNEL = '#p2pool-efl'
 VERSION_CHECK = lambda v: None if 100400 <= v else 'Litecoin version too old. Upgrade to 0.10.4 or newer!'
 VERSION_WARNING = lambda v: None
